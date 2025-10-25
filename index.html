@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" style="font-family: 'ADLaM Display', cursive;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Evovar | Ideas Elevated</title>
+        <!-- Standard favicon for most browsers -->
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- High-resolution favicon for modern devices -->
+        <link rel="icon" type="image/png" sizes="512x512" href="favicon-512x512.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <style>:root { --navy-blue: #1b3a2f; --light-blue: #cfe6d3; --dark-blue: #2f5b4a; --white: #FFFFFF; --light-gray: #F5F5F5; --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Inter', sans-serif; color: #333; background-color: var(--white); overflow-x: hidden; line-height: 1.6; } h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; font-weight: 600; margin-bottom: 1rem; color: #c6915d; } .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; } /* Header & Navigation */header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); padding: 15px 0; transition: var(--transition); } header.scrolled { padding: 10px 0; } .header-container { display: flex; justify-content: space-between; align-items: center; } .logo { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #c6915d; text-decoration: none; display: flex; align-items: center; } .logo span { color: #c6915d; } .nav-links { display: flex; list-style: none; } .nav-links li { margin-left: 30px; } .nav-links a { text-decoration: none; color: #c6915d; font-weight: 500; font-size: 16px; position: relative; transition: var(--transition); } .nav-links a:after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: #b9d5ff; transition: var(--transition); } .nav-links a:hover:after { width: 100%; } .hamburger { display: none; cursor: pointer; background: none; border: none; width: 40px; height: 40px; position: relative; z-index: 1001; } .hamburger span { display: block; width: 30px; height: 3px; margin: 6px auto; background-color: #c6915d; border-radius: 2px; transition: var(--transition); transform-origin: center; } .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); } .hamburger.active span:nth-child(2) { opacity: 0; } .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); } /* Hero Section */.hero { padding: 160px 0 100px; background: linear-gradient(135deg, #386cb8 0%, #ffffff 100%); position: relative; overflow: hidden; } .hero-content { max-width: 650px; position: relative; z-index: 2; } .hero h1 { font-size: 3.5rem; margin-bottom: 20px; color: #704522; line-height: 1.2; opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards 0.5s; font-family: 'Inter', sans-serif; } .hero p { font-size: 1.2rem; margin-bottom: 30px; color: #162948; opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards 0.8s; } .hero-quote { font-style: italic; color: #162946; font-size: 1.4rem; margin: 30px 0; padding-left: 20px; border-left: 4px solid #162946; opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards 1.1s; } .btn { display: inline-block; padding: 15px 35px; background-color: #152847; color: var(--white); border: none; border-radius: 50px; font-size: 16px; font-weight: 500; text-decoration: none; cursor: pointer; transition: var(--transition); transform: translateY(0); box-shadow: 0 4px 15px rgba(198, 145, 93, 0.2); opacity: 0; animation: fadeInUp 1s forwards 1.4s; } .btn:hover { background: linear-gradient(135deg, #386cb8 30%, #ffffff 100%); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(22, 41, 71, 0.3); } .btn i { margin-left: 8px; transition: var(--transition); } .btn:hover i { transform: translateX(5px); } /* Services Section */.services { padding: 100px 0; background-color: var(--white); } .section-title { text-align: center; margin-bottom: 60px; } .section-title h2 { font-size: 2.5rem; position: relative; display: inline-block; padding-bottom: 15px; } .section-title h2:after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background-color: #162946; } .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; } .service-card { background: var(--light-gray); border-radius: 15px; padding: 40px 30px; text-align: center; transition: var(--transition); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); opacity: 0; transform: translateY(20px); } .service-card.visible { opacity: 1; transform: translateY(0); } .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); background: linear-gradient(135deg, #386cb8 0%, #ffffff 100%); } .service-icon { width: 80px; height: 80px; background-color: #172945; color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 30px; transition: var(--transition); } .service-card:hover .service-icon { background-color: var(--white); color: #172945; transform: scale(1.1) rotate(5deg); } .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; } /* About Section */.about { padding: 100px 0; background: linear-gradient(135deg, #386cb8 0%, #ffffff 100%); } .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; } .about-text h2 { font-size: 2.5rem; margin-bottom: 20px; } .about-text p { margin-bottom: 20px; font-size: 1.1rem; } .about-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); opacity: 0; transform: translateX(50px); transition: all 1s ease; } .about-image.visible { opacity: 1; transform: translateX(0); } .about-image:before { content: ''; position: absolute; top: -20px; left: -20px; right: 20px; bottom: 20px; border: 3px solid #c6915d; border-radius: 20px; z-index: -1; } .about-image img { width: 100%; height: auto; display: block; transition: var(--transition); } .about-image:hover img { transform: scale(1.05); } /* Contact Section */.contact { padding: 100px 0; background-color: var(--white); } .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; } .contact-info { background: linear-gradient(135deg, #386cb8 0%, #ffffff 100%); padding: 50px; border-radius: 20px; color: #a1693f; } .contact-info h3 { color: #a1693f; font-size: 1.8rem; margin-bottom: 30px; } .contact-detail { display: flex; align-items: center; margin-bottom: 25px; } .contact-icon { width: 50px; height: 50px; background-color: rgba(22, 41, 70, 0.17); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 20px; color: #386cb8; } .contact-detail a { color: #162946; text-decoration: none; transition: var(--transition); } .contact-detail a:hover { color: #957860; } .contact-form { padding: 20px 0; } .form-group { margin-bottom: 25px; } .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #c6915d; } .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; transition: var(--transition); } .form-group input:focus, .form-group textarea:focus { border-color: #162946; outline: none; box-shadow: 0 0 0 3px rgba(22, 41, 70, 0.2); } .form-btn { background-color: #162946; color: var(--white); border: none; padding: 15px 30px; border-radius: 50px; font-size: 16px; font-weight: 500; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; } .form-btn:hover { background: linear-gradient(135deg, #386cb8 0%, #ffffff 100%); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(22, 41, 71, 0.3); } /* Form Status Messages */.form-status { padding: 15px; border-radius: 10px; margin-bottom: 20px; display: none; text-align: center; } .form-status.success { background-color: #d4edda; color: #155724; display: block; } .form-status.error { background-color: #f8d7da; color: #721c24; display: block; } /* Footer */footer { background: #4e321d; color: var(--white); padding: 60px 0 30px; } .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; } .footer-col h4 { color: #c6915d; margin-bottom: 20px; font-size: 1.3rem; } .footer-col p { margin-bottom: 20px; opacity: 0.8; transition: var(--transition); position: relative; display: inline-block; cursor: pointer; } .footer-col p:after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: #b9d5ff; transition: var(--transition); } .footer-col p:hover { color: #c5dcff; } .footer-col p:hover:after { width: 100%; } .social-links { display: flex; gap: 15px; } .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; color: var(--white); transition: var(--transition); } .social-links a:hover { background-color: #4f88dc; transform: translateY(-5px); } .footer-col ul { list-style: none; } .footer-col ul li { margin-bottom: 12px; } .footer-col ul a { color: var(--white); text-decoration: none; opacity: 0.8; transition: var(--transition); position: relative; } .footer-col ul a:after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: #b9d5ff; transition: var(--transition); } .footer-col ul a:hover { opacity: 1; color: #c5dcff; padding-left: 5px; } .footer-col ul a:hover:after { width: 100%; } .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); opacity: 0.7; } /* Animations */@keyframes fadeInUp { from {  opacity: 0;  transform: translateY(20px); }  to {  opacity: 1;  transform: translateY(0); } } @keyframes fadeInLeft { from {  opacity: 0;  transform: translateX(-50px); }  to {  opacity: 1;  transform: translateX(0); } } @keyframes fadeInRight { from {  opacity: 0;  transform: translateX(50px); }  to {  opacity: 1;  transform: translateX(0); } } /* Loading spinner for form submission */.spinner { width: 20px; height: 20px; border: 3px solid rgba(255, 255, 255, 0.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite; display: inline-block; margin-right: 10px; display: none; } @keyframes spin { to {  transform: rotate(360deg); } } /* Responsive Styles */@media (max-width: 992px) { .about-content, .contact-container {  grid-template-columns: 1fr; }  .about-image {  order: -1; }  .hero h1 {  font-size: 2.8rem; } } @media (max-width: 768px) { .nav-links {  position: fixed;  top: 0;  right: -100%;  width: 70%;  height: 100vh;  background: linear-gradient(135deg, #386cb8 0%, #ffffff 100%);  flex-direction: column;  align-items: center;  justify-content: center;  transition: var(--transition);  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15); }  .nav-links.active {  right: 0; }  .nav-links li {  margin: 20px 0; }  .nav-links a {  color: #c6915d;  font-size: 1.2rem; }  .nav-links a:after {  background-color: #172a46; }  .hamburger {  display: block; }  .hero h1 {  font-size: 2.3rem; }  .hero p, .hero-quote {  font-size: 1.1rem; }  .section-title h2 {  font-size: 2rem; } } @media (max-width: 576px) { .hero {  padding: 130px 0 80px; }  .hero h1 {  font-size: 2rem; }  .btn {  padding: 12px 25px; }  .service-card {  padding: 30px 20px; }  .contact-info {  padding: 30px; } }</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee:400&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ADLaM+Display&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=AR+One+Sans&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akatab&display=swap">
+    </head>
+    <body>
+        <!-- Header & Navigation -->
+        <header id="header">
+            <div class="container header-container" style="margin-bottom: -17px; margin-top: 14px;">
+                <a href="#" class="logo"></a>
+                <button class="hamburger" id="hamburger" style="margin-left: -35px; left: -12px; margin-right: 8px;">
+                    <span style="background-color: #172a47; color: #714623;"></span>
+                    <span style="background-color: #172a47;"></span>
+                    <span style="background-color: #172a47;"></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li>
+                        <a href="#home" style="bottom: 2px; font-size: 20px; left: -5px; color: #162946;">Home</a>
+                    </li>
+                    <li>
+                        <a href="#services" style="bottom: 2px; font-size: 20px; left: -5px; color: #162946;">Services</a>
+                    </li>
+                    <li>
+                        <a href="#about" style="bottom: 2px; font-size: 20px; left: -5px; color: #162946;">About</a>
+                    </li>
+                    <li>
+                        <a href="#contact" style="bottom: 2px; font-size: 20px; left: -5px; color: #162946;">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="https://www.evovar.com" onclick="window.location.href='https://www.evovar.com'; return false;"> <img src="logo.png" width="165" style="margin: -64px -6px -5px 25px; bottom: -43px;"/></a>
+        </header>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container" style="font-family: ABeeZee;">
+                <div class="hero-content">
+                    <h1 style="font-family: 'Akatab', sans-serif; color: #152846;">Transforming Spaces into Experiences</h1>
+                    <p>Evovar creates exceptional residential and corporate interiors, exhibition stands, immersive brand identities, memorable events, and 3D-printed prototypes that tell your story and captivate audiences.</p>
+                    <p class="hero-quote">"Evolving Ideas. Elevating Experiences."</p>
+                    <a href="#contact" class="btn" style="
+/* background-color: #162946 */">Get in Touch <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2 style="font-family: 'Akatab', sans-serif; color: #172945;">Our Services</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fa fa-home fas"></i>
+                        </div>
+                        <h3 style="font-family: 'Akatab', sans-serif; color: #162946;">Residential Interiors &amp; Exteriors&nbsp;</h3>
+                        <p>Living spaces that spark curiosity, flow with comfort, and feel unmistakably yours.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fa fa-building fas"></i>
+                        </div>
+                        <h3 style="font-family: 'Akatab', sans-serif; color: #162946;">Corporate &amp; Commercial Spaces</h3>
+                        <p>Dynamic workspaces that reflect your brand while enhancing productivity and collaboration.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fa fa-cubes"></i>
+                        </div>
+                        <h3 style="font-family: 'Akatab', sans-serif; color: #162946;">Trade Fair &amp; Exhibition Stand Experiences</h3>
+                        <p>Exhibition stands that captivate visitors and showcase your brand with impact.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fa fa-paint-brush fas"></i>
+                        </div>
+                        <h3 style="font-family: 'Akatab', sans-serif; color: #162946;">Strategic Brand Identitiy Creation &amp; Enhancement</h3>
+                        <p>Immersive brand experiences crafted to make every detail resonate with your audience.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <h3 style="font-family: 'Akatab', sans-serif; color: #162946;">Event Management Solutions</h3>
+                        <p><p>From concept to celebration &ndash; creative ideas, seamless planning, and flawless execution that turn events into unforgettable experiences.<br></p></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fa fa-cube fa-tools fas"></i>
+                        </div>
+                        <h3 style="font-family: 'Akatab', sans-serif; color: #162946;">Product Innovation &amp; 3D Printing Prototypes</h3>
+                        <p><p data-start="1099" data-end="1238"><p>From spark to showcase - bold concepts, rapid prototypes.<br data-start="105" data-end="108"> Visionary ideas, built fast and ready to test.</p></p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 style="font-family: 'Akatab', sans-serif; color: #162946;">About Evovar</h2>
+                        <p style="color: #0b1321;">Based in Bengaluru, India, Evovar is a premier creative &amp; fabrication company dedicated to transforming spaces into memorable experiences. With our imaginative vision and technical precision, we bring ideas to life.</p>
+                        <p style="color: #0b1321;">Our team of skilled innovators and craftsmen work together to deliver exceptional results that exceed client expectations. We believe in evolving ideas to ignite wonder and elevate experiences.</p>
+                        <p style="color: #0b1321;">From concept to completion, we pay attention to every detail ensuring that each project reflects the unique identity and objectives of our clients.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="image1.png" alt="Evovar Design Workspace">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2 style="font-family: 'Akatab', sans-serif; color: #162946;">Get In Touch</h2>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3 style="font-family: 'Akatab', sans-serif; color: #162946;">Contact Information</h3>
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone" style="color: #162946;"></i>
+                            </div>
+                            <div>
+                                <a href="tel:+919945417597">+91 9945417597</a>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+</div>
+                            <img src="image.png" width="28" style="margin-left: -54px; margin-bottom: -1px;"/>
+                            <div>
+                                <a style="margin-left: 27px;" target="&quot;_blank&quot;" rel="&quot;noopener noreferrer&quot; " href="http://wa.me/919945417597?text=Hi%20Evovar%20%E2%80%94%20Evolving%20Ideas.%20Elevating%20Experiences.%20I%20have%20an%20inquiry.">Message Evovar</a>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope" style="color: #162946;"></i>
+                            </div>
+                            <div>
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=evovar.studio@gmail.com" target="_blank" rel="&quot;noopener noreferrer&quot;">evovar.studio@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope" style="color: #162946;"></i>
+                            </div>
+                            <div>
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=evovar.info@gmail.com" target="_blank" rel="&quot;noopener noreferrer&quot;">evovar.info@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt" style="color: #162946;"></i>
+                            </div>
+                            <div>
+                                <p> <a href="https://www.google.com/maps?q=Bengaluru,India" target="_blank" rel="noopener noreferrer">
+    Bengaluru, India </a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm" onsubmit="return openGmail();">
+                            <div class="form-group">
+                                <label for="name" style="color: #162946;">Your Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" style="color: #162946;">Your Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" style="color: #162946;">Your Phone&nbsp;</label>
+                                <input type="tel" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" style="color: #162946;">Your Message</label>
+                                <textarea id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="form-btn" id="submit-btn">
+                                <span class="spinner" id="form-spinner"></span>
+                                <span id="btn-text">Send Message</span>
+                                <i class="fas fa-paper-plane" style="margin-left: 9px;"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <script>
+function openGmail() {
+    const name = encodeURIComponent(document.getElementById('name').value);
+    const email = encodeURIComponent(document.getElementById('email').value);
+    const phone = encodeURIComponent(document.getElementById('phone').value);
+    const message = encodeURIComponent(document.getElementById('message').value);
+
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=evovar.studio@gmail.com&su=Enquiry%20About%20Services&body=Name:%20${name}%0AEmail:%20${email}%0APhone:%20${phone}%0A%0AMessage:%20${message}`;
+
+    window.open(gmailLink, "_blank");
+    return false; // prevent default form submission
+}
+</script>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer style="background-color: #162946;">
+            <div class="container" style="background-color: #162946;">
+                <div class="footer-container">
+                    <div class="footer-col">
+                        <h4 style="font-family: 'Akatab', sans-serif; color: #ffffff;">Evovar</h4>
+                        <p>&quot;Evolving Ideas. Elevating Experiences.&quot;</p>
+                        <div class="social-links">
+                            <a href="https://linktr.ee/evovar" target="_blank" rel="noopener noreferrer"> <i class="fa fa-link"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61579566860794" target="&quot;_blank&quot; " rel="&quot;noopener noreferrer&quot;"><i class="fab fa-facebook-f"></i></a>
+                            <a href="http://wa.me/919945417597?text=Hi%20Evovar%20%E2%80%94%20Evolving%20Ideas.%20Elevating%20Experiences.%20I%20have%20an%20inquiry." target="&quot;_blank&quot; " rel="&quot;noopener noreferrer&quot;"><i class="fa fa-whatsapp fab" href="http://wa.me/919945417597?text=Hi%20Evovar%20%E2%80%94%20Evolving%20Ideas.%20Elevating%20Experiences.%20I%20have%20an%20inquiry." target="&quot;blank&quot;" rel="&quot;noopener noreferrer&quot;"></i></a>
+                            <a href="https://www.instagram.com/evovar_official/" rel="&quot;noopener noreferrer&quot;" target="&quot;_blank&quot; "><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/sathish-kumar-88263425b/?utm_source+share&amp;utm_campaign+share_via&amp;utm_content+profile&amp;utm_medium+android_app" target="&quot;_blank&quot; " rel="&quot;noopener noreferrer&quot;"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://x.com/Evovar_Official" target="&quot;_blank&quot; " rel="&quot;noopener noreferrer&quot;"><i class="fa-twitter fab"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4 style="font-family: 'Akatab', sans-serif; color: #ffffff;">Services</h4>
+                        <ul>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                            <li>
+                                <a href="#">Residential Interiors & Exteriors</a>
+                            </li>
+                            <li>
+                                <a href="#">Corporate & Commercial Spaces</a>
+                            </li>
+                            <li>
+                                <a href="#">Trade Fair &amp; Exhibition Stand Experiences</a>
+                            </li>
+                            <li>
+                                <a href="#">Strategic Brand Identitiy Creation & Enhancement</a>
+                            </li>
+                            <li>
+                                <a href="#">Event Management Solutions</a>
+                            </li>
+                            <li>
+                                <a href="#">Product Innovation & 3D Printing Prototypes</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 style="font-family: 'Akatab', sans-serif; color: #ffffff;">Quick Links</h4>
+                        <ul>
+                            <li>
+                                <a href="#home">Home</a>
+                            </li>
+                            <li>
+                                <a href="#services">Services</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; Copyright 2025 Evovar. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script>
+        // Initialize EmailJS with your Public Key
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Toggle aria-expanded for accessibility
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function checkVisibility() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const aboutImage = document.querySelector('.about-image');
+            
+            serviceCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.classList.add('visible');
+                }
+            });
+            
+            const aboutImagePosition = aboutImage.getBoundingClientRect().top;
+            const aboutScreenPosition = window.innerHeight / 1.3;
+            
+            if (aboutImagePosition < aboutScreenPosition) {
+                aboutImage.classList.add('visible');
+            }
+        }
+        
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+
+        // Form submission with EmailJS
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('form-status');
+        const formSpinner = document.getElementById('form-spinner');
+        const btnText = document.getElementById('btn-text');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                formSpinner.style.display = 'inline-block';
+                btnText.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Send the email using EmailJS
+                emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this) // Replace with your Service ID and Template ID
+                    .then(function() {
+                        // Success message
+                        formStatus.textContent = 'Thank you for your message! We will get back to you soon.';
+                        formStatus.classList.add('success');
+                        formStatus.classList.remove('error');
+                        
+                        // Reset form
+                        contactForm.reset();
+                    }, function(error) {
+                        // Error message
+                        formStatus.textContent = 'Sorry, there was an error sending your message. Please try again later.';
+                        formStatus.classList.add('error');
+                        formStatus.classList.remove('success');
+                    })
+                    .finally(function() {
+                        // Reset button state
+                        formSpinner.style.display = 'none';
+                        btnText.textContent = 'Send Message';
+                        submitBtn.disabled = false;
+                    });
+            });
+        }
+    </script>
+    </body>
+</html>
